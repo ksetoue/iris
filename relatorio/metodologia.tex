@@ -4,18 +4,22 @@
 \chapter{Experimentos}\label{cap:metodologia}
 % ----------------------------------------------------------
 
+Para realizar uma análise comparativa entre as técnicas de reconhecimento biométrico, o presente trabalho fará avaliação das curvas ROC \textit{Receiver operating characteristic} de cada técnica. As técnicas utilizadas no experimento são GLCM - \textit{Gray Level Co-ocurrence Matrix}, LBP - \textit{Local Binary Patterns} e os Filtros de Gabor. 
+
+O experimento é dividido em três fases, sendo a primeira no tratamento e extração do modelo da íris; a segunda na aplicação das técnicas e a terceira na análise dos resultados. Para os experimentos foram utilizadas 10 classes. Cada classe corresponde a uma pessoa. Para cada pessoa há um equivalente de 10 imagens, sendo 5 de cada seção de extração de imagens. 
 
 % ----------------------------------------------------------
 \section{Base de dados}\label{sec:bd}
 % ----------------------------------------------------------
 
-% ----------------------------------------------------------
-\section{GLCM - \textit{Gray Level Co-ocurrence Matrix}}\label{sec:glcm}
-% ----------------------------------------------------------
+As imagens utilizadas foram extraídas da base \footnote{\url{http://iris.di.ubi.pt/}}. 
+
+A técnica GLCM - \textit{Gray Level Co-ocurrence Matrix} para identificação de padrões de textura consiste no uso de matrizes de dependências para extração de características de textura de imagens. A técnica considera que há uma dependencia espacial de frequências entre a vizinhança dos \textit{pixels} analizados de uma região da imagem. A partir disto, a matriz de co-ocorrencia é calculada. No presente experimento, foi utilizada a matriz de co-ocorrencia média e as propriedades de contraste, homogeneidade, correlação e energia. 
 
 % ----------------------------------------------------------
 \section{LBP - \textit{Local Binary Patterns}}\label{sec:lbp}
 % ----------------------------------------------------------
+A técnica LBP aplica a função \textit{extractLBPFeatures} do Matlab para obter o vetor de características que é utlizado como descritor. Para cada amostra, obtida sem enlace, considerando as direções da imagem.  
 
 % ----------------------------------------------------------
 \section{Filtros de Gabor}\label{sec:gabor}
