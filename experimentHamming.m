@@ -13,12 +13,15 @@ for j = 1:col
 %     dista = dista(:);
     dista = struct;
 %     G = abs(s(j).lbp);
-    G = s(j).glcm; 
-%     G = s(j).gabor; 
+    % G = s(j).glcm; 
+    G = s(j).gabor; 
     for k = 1:col
 %         v = abs(s(k).lbp);
-        v = s(k).glcm;
-%         v = s(k).gabor;
+%         v = s(k).glcm;
+        v = s(k).gabor;
+%         dista(k).value = pdist2(G, v, 'hamming');
+%         matrix = pdist2(G, v, 'hamming');
+%         dista(k).value = hammingDist(matrix); 
         dista(k).value = norm(G-v);         
         dista(k).class = s(k).class; 
         dista(k).label = s(k).label;
@@ -42,11 +45,24 @@ for j = 1: col
     distancias(j).dista = Asorted;
 end
 
+score = 0;
+threshold = 65; 
+test = struct;
+for i = 1:11
+    index = round(1 + rand(1,1)*(55-1)); 
+    test(i).class = distancias(index).class; 
+    test(i).label = distancias(index).label; 
+    test(i).dista = distancias(index).dista; 
+end
+
+TP = 0; 
+FP = 0; 
+P = 0; 
 
 
 
 
-% 
+
 % precRecall = struct; 
 % 
 % for recall = 1:label
@@ -89,8 +105,8 @@ end
 % end
 % 
 % plot(r,p);
-% title('Precision x Recall - LBP');
+% % title('Precision x Recall - LBP');
 % title('Precision x Recall - GLCM');
-% title('Precision x Recall - Complex Coordinates');
+% % title('Precision x Recall - Complex Coordinates');
 % ylabel('precision'); 
 % xlabel('recall');
